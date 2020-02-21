@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from "react";
 import {MoviesService} from "../services/MoviesService.js";
+import { Link } from "react-router-dom";
 
 export const MoviesList = () => {
     const [movies,setMovies] = useState([]);
@@ -10,13 +11,16 @@ export const MoviesList = () => {
     };
 
     useEffect(() => {
-      console.log('passou no useEffect');
+      console.log('passou no useEffect da MoviesList');
       requisitarFilmes();
     },[]);
     
     return (
       <ol>
-        {movies.map(movie => (<li>Título: {movie.title} ({movie.original_title}) </li>))}
+        {movies.map(movie => (<li>
+                                Título: {movie.title}
+                                <Link to={`/movie/${movie.id}`}>Detalhes</Link>
+                              </li>))}
       </ol>
     )
 
