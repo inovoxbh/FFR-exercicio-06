@@ -6,7 +6,6 @@ import { ApplicationRoutes } from "./ApplicationRoutes";
 export default function App() {
   return (
     <div className="App">
-      <h1>Populares</h1>
       <ApplicationRoutes />
     </div>
   );
