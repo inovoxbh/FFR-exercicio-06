@@ -1,22 +1,11 @@
-import React, {useState,useEffect} from "react";
-import {MoviesService} from "../services/MoviesService.js";
+import React from "react";
 import { Link } from "react-router-dom";
 import {setFavorite, removeFavorite} from "../actions/favActions";
 import { useDispatch } from "react-redux";
-
+import { usePopularMovies } from "../hooks/usePopularMovies.js"
 
 export const MoviesList = () => {
-    const [movies,setMovies] = useState([]);
-
-    const requisitarFilmes = async () => {
-      const resultadoFilmes = await MoviesService.getPopularMovies();
-      setMovies(resultadoFilmes.data.results);
-    };
-
-    useEffect(() => {
-      console.log('passou no useEffect da MoviesList');
-      requisitarFilmes();
-    },[]);
+    const movies = usePopularMovies();
     
     const dispatch = useDispatch();
 

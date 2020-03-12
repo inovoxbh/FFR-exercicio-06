@@ -1,20 +1,10 @@
-import React, {useState,useEffect} from "react";
-import {MoviesService} from "../services/MoviesService.js";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useMovieDetails } from "../hooks/useMovieDetails.js"
 
 export const Details = (props) => {
-    const [detalhes,setDetalhes] = useState({});
+    const detalhes = useMovieDetails(props);
 
-    const consultarDetalhes = async () => {
-      const detalhesFilme = await MoviesService.getMovieById(props.match.params.id);
-      setDetalhes(detalhesFilme.data);
-    };
-
-    useEffect(() => {
-      console.log('passou no useEffect da DetailsPage');
-      consultarDetalhes();
-    },[]);
-    
     return (
         <div>
             <h1>{detalhes.title}</h1>

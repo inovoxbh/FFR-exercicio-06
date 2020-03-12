@@ -18,8 +18,10 @@ import {
         return {
           ...state,
           favMovies: state.favMovies.filter(movie => {
-              if (movie.id != action.payload.id)
+              if (movie.id !== action.payload.id)
                 return true;
+              
+              return false;
           })
         };
       default:
